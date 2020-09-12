@@ -8,6 +8,7 @@ const { resolve, join } = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 // const files = sync('./src/web/views/**/*.entry.js');
 
 
@@ -28,6 +29,14 @@ let _plugins = [
         chunkFilename: _modeFlag
             ? 'styles/[name].[contenthash:5].css'
             : 'styles/[name].css',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: './lib',
+          to: '../lib',
+        },
+      ],
     }),
 ];
 
