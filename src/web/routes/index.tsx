@@ -14,21 +14,20 @@ const Hot = lazy(() =>
 interface YDProps extends RouteProps {
   auth?: boolean;
 }
-const parent = '/yideng';
 export const routeLists: YDProps[] = [
   {
-    path: `${parent}`,
+    path: '/',
     exact: true,
     component: Daily,
     auth: true,
   },
   {
-    path: `${parent}/history`,
+    path: '/history',
     exact: true,
     component: History,
   },
   {
-    path: `${parent}/hot`,
+    path: '/hot',
     exact: true,
     component: Hot,
   },

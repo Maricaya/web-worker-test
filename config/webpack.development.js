@@ -17,6 +17,7 @@ module.exports = {
     // https: false, // true for self-signed, object for cert authority
     // noInfo: true, // only errors & warns on hot reload
     port: 9000,
+    historyApiFallback: true,
     open: true,
     before(app, server, compiler) {
       // do fancy stuff
