@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React  from 'react';
 import { useQuery } from 'react-query';
 type IData = {
   [key: string]: string;

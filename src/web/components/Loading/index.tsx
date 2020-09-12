@@ -1,6 +1,6 @@
 import "./loading.css";
 import * as React from "react";
-const Loading = () => {
+const Loading:React.FC = () => {
   return (
     <>
       <div className="components-loading">
