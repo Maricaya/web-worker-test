@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 // import 'mobx-react-lite/batchingForReactDom';
 import App from '@pages/App';
 // import 'mobx-react-lite/batchingForReactDom';
-import './index.css'
+import './index.css';
 
 ReactDOM.render(<App />, document.getElementById('main'));
