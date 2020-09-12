@@ -9,14 +9,16 @@ const App = () => {
   //   const token = useRootData((store) => store.home.token);
   return (
     <BrowserRouter>
+      <Banner />
+      <div className="link-box">
       {routeLists.map((item, index) => {
         return (
           <div key={index}>
-            <Link to={item.path as string}>{item.path}</Link>;
+            <Link to={item.path as string}>{item.title}</Link>;
           </div>
         );
       })}
-      <Banner />
+      </div>
       {routes('')}
     </BrowserRouter>
   );

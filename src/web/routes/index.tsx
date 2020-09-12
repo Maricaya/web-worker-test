@@ -13,6 +13,7 @@ const Hot = lazy(() =>
 );
 interface YDProps extends RouteProps {
   auth?: boolean;
+  title?:string;
 }
 export const routeLists: YDProps[] = [
   {
@@ -20,16 +21,19 @@ export const routeLists: YDProps[] = [
     exact: true,
     component: Daily,
     auth: true,
+    title: '每日一题'
   },
   {
     path: '/history',
     exact: true,
     component: History,
+    title: '历史题目'
   },
   {
     path: '/hot',
     exact: true,
     component: Hot,
+    title: '热门题目'
   },
 ];
 
