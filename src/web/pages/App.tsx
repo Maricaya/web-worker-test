@@ -3,12 +3,11 @@ import routes from '@routes/index';
 import { BrowserRouter as Router } from 'react-router-dom';
 // import { useRootData } from 'web/tools/useRootData';
 
-
 const App = () => {
-//   const token = useRootData((store) => store.home.token);
+  //   const token = useRootData((store) => store.home.token);
   return (
     // <StoreProvider>
-        <h1>hello world</h1>
+    <h1>hello world</h1>
     // <Router basename="/">{routes(token)}</Router>
     // </StoreProvider>
   );
