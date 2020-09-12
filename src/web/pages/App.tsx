@@ -4,9 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 // import { useRootData } from 'web/tools/useRootData';
 
 const App = () => {
-  fetch('/api/question/type').then((res) => {
-    console.log(res);
-  });
+  console.log(1);
   //   const token = useRootData((store) => store.home.token);
   return (
     // <StoreProvider>
