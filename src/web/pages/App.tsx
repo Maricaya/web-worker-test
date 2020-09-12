@@ -1,6 +1,6 @@
 import React from 'react';
-import routes from '@routes/index';
-import { BrowserRouter as Router } from 'react-router-dom';
+import routes, { routeLists } from '@routes/index';
+import { BrowserRouter, Link } from 'react-router-dom';
 // import { useRootData } from 'web/tools/useRootData';
 import Banner from '@components/Banner';
 
@@ -8,15 +8,16 @@ const App = () => {
   console.log(1);
   //   const token = useRootData((store) => store.home.token);
   return (
-    // <StoreProvider>
-    <>
-        <Banner></Banner>
-        <h1>hello world</h1>
-        <Router basename="/" >每日一题</Router>
-        <Router basename="/history">历史题目</Router>
-        <Router basename="/hot">热门题目</Router>
-    </>
-    // </StoreProvider>
+    <BrowserRouter>
+      {routeLists.map((item, index) => {
+        return (
+          <div key={index}>
+            <Link to={item.path as string}>{item.path}</Link>;
+          </div>
+        );
+      })}
+      <Banner />
+    </BrowserRouter>
   );
 };
 export default App;

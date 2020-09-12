@@ -1,34 +1,34 @@
-import * as React from "react";
-import { Route, Switch, RouteProps, Redirect } from "react-router-dom";
-import Daily from "@components/DailyQuestion";
-import Loading from "@components/Loading";
+import * as React from 'react';
+import { Route, Switch, RouteProps, Redirect } from 'react-router-dom';
+import Daily from '@components/DailyQuestion';
+import Loading from '@components/Loading';
 // import { string } from "prop-types";
 const { lazy, Suspense } = React;
 
-const History = lazy(
-  () => import(/* webpackChunkName:"demo" */ "@components/HistoryQuestion")
+const History = lazy(() =>
+  import(/* webpackChunkName:"demo" */ '@components/HistoryQuestion')
 );
-const Hot = lazy(
-  () => import(/* webpackChunkName:"login" */ "@components/HotQuestion")
+const Hot = lazy(() =>
+  import(/* webpackChunkName:"login" */ '@components/HotQuestion')
 );
 interface YDProps extends RouteProps {
   auth?: boolean;
 }
-
-export const routes: YDProps[] = [
+const parent = '/yideng';
+export const routeLists: YDProps[] = [
   {
-    path: "/",
+    path: `${parent}`,
     exact: true,
     component: Daily,
     auth: true,
   },
   {
-    path: "/history",
+    path: `${parent}/history`,
     exact: true,
     component: History,
   },
   {
-    path: "/hot",
+    path: `${parent}/hot`,
     exact: true,
     component: Hot,
   },
@@ -36,24 +36,24 @@ export const routes: YDProps[] = [
 
 // 对状态属性进行监听
 const Routes = () => (
-    <Suspense fallback={<Loading />}>
-      <Switch>
-        {routes.map((r, index) => {
-          console.log('🍊', index);
-          const { path, exact, component } = r;
-          const LazyCom = component;
-          return (
-            <Route
-              key={index}
-              path={path}
-              exact={exact}
-              render={(props) =><LazyCom {...props} />}
-            />
-          );
-        })}
-        {/* <Route component={NotFound} /> */}
-      </Switch>
-    </Suspense>
-  );
-  
-  export default Routes;
+  <Suspense fallback={<Loading />}>
+    <Switch>
+      {routeLists.map((r, index) => {
+        console.log('🍊', index);
+        const { path, exact, component } = r;
+        const LazyCom = component;
+        return (
+          <Route
+            key={index}
+            path={path}
+            exact={exact}
+            render={(props) => <LazyCom {...props} />}
+          />
+        );
+      })}
+      {/* <Route component={NotFound} /> */}
+    </Switch>
+  </Suspense>
+);
+
+export default Routes;
