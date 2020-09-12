@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev":"webpack-dev-server --mode development",
+    "dev": "webpack-dev-server --mode development",
     "start": "pm2 app.js",
     "test": "jest --coverage --reporters default jest-stare",
     "depoly": "npm-run-all --parallel client:dev server:dev",
@@ -49,6 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^3.6.1",
     "@webpack-cli/serve": "^1.0.1-alpha.5",
     "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^6.1.0",
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.0",
     "eslint": "^7.7.0",
@@ -71,10 +72,12 @@
     "postcss-preset-env": "^6.7.0",
     "progress-bar-webpack-plugin": "^2.1.0",
     "scripty": "^2.0.0",
+    "style-loader": "^1.2.1",
     "ts-node-dev": "^1.0.0-pre.61",
     "webpack": "^5.0.0-beta.29",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^5.1.4"
   },
   "dependencies": {
     "awilix": "^4.2.6",
