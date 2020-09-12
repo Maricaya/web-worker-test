@@ -102,11 +102,11 @@ const webpackConfig = {
         extensions: [".js", ".json", ".jsx", ".css", ".ts", ".tsx"],
         modules: ['node_modules', resolve('src')],
     },
-    // externals: {
-    //     react: 'React',
-    //     'react-dom': 'ReactDOM',
-    //     'react-router-dom': 'ReactRouterDOM',
-    // },
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        'react-router-dom': 'ReactRouterDOM',
+    },
     experiments: {
         topLevelAwait: true,
         asset: true,
