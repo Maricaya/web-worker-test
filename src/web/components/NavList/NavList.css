@@ -1,19 +1,23 @@
 :root {
-    --theme: #333;
-    --fontColor: #333
+  --theme: #333;
+  --fontColor: #333;
 }
 
 .questionBank-navBar {
-    display: flex;
-    height: 40px;
-    flex: 1;
-    overflow: hidden;
-}
-
-.questionBank-navBar .navItem {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  flex: 1;
+  overflow: hidden;
+  & .navItem {
     font-size: 100%;
     display: inline-block;
-    padding: 10px 30px;
+    padding: 20px 40px;
     color: var(--fontColor);
     text-decoration: none;
+  }
+  & :hover {
+    color: '#446d91';
+    font-weight: 500;
+  }
 }

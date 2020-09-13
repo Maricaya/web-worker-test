@@ -1,11 +1,21 @@
-.tabItem {
+.LabelClassification {
+  & .tabItem {
+    display: inline-block;
+    padding: 10px 20px;
     height: 20px;
     text-align: center;
     line-height: 20px;
     font-size: 16px;
-    color: #333;
     border-radius: 4px;
     cursor: pointer;
     display: inline-block;
-    padding: 0 17px;
+  }
+  & .light {
+    background: #446d91;
+    color: #fff;
+  }
+  & .normal {
+    background: #fff;
+    color: #333;
+  }
 }
