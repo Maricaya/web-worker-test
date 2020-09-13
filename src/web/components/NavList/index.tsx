@@ -1,17 +1,21 @@
 import React, { FC } from 'react';
 import { routeLists } from '@routes/index';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './NavList';
 
 const NavList: FC = () => {
   return (
-    <div className="questionBank-navBar">
+    <div className="yd-questionBank-navBar">
       {routeLists.map((item, index) => {
         return (
           <div key={index}>
-            <Link to={item.path as string} className="navItem">
+            <NavLink
+              to={item.path as string}
+              activeStyle={{ color: '#446d91' }}
+              className="yd-navItem"
+            >
               {item.name}
-            </Link>
+            </NavLink>
           </div>
         );
       })}

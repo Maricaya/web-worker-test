@@ -1,0 +1,6 @@
+.yd-questionType-tab {
+  & .yd-questionType-list {
+    padding: 20px;
+    color: #ccc;
+  }
+}

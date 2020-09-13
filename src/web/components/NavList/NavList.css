@@ -1,19 +1,26 @@
 :root {
-    --theme: #333;
-    --fontColor: #333
+  --theme: #333;
+  --fontColor: #333;
+  --background: #ecfedd;
 }
 
-.questionBank-navBar {
-    display: flex;
-    height: 40px;
-    flex: 1;
-    overflow: hidden;
-}
-
-.questionBank-navBar .navItem {
-    font-size: 100%;
+.yd-questionBank-navBar {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  background: var(--background);
+  flex: 1;
+  padding-left: 30px;
+  overflow: hidden;
+  & .yd-navItem {
+    font-size: 18px;
     display: inline-block;
-    padding: 10px 30px;
+    padding: 20px 40px;
     color: var(--fontColor);
     text-decoration: none;
+  }
+  & :hover {
+    color: '#446d91';
+    font-weight: 500;
+  }
 }
