@@ -1,0 +1,6 @@
+.questionType-tab {
+  & .questionType-list {
+    padding: 20px;
+    color: #ccc;
+  }
+}

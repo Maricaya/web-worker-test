@@ -72,6 +72,37 @@ module.exports = {
           msg: '成功'
         })
       })
+
+      app.get('/api/question/typeTab', (req, res) => {
+        res.json({
+          type: 'vue',
+          data: [{
+            title: 'vue是什么',
+            id: '001'
+          }, {
+            title: 'vue是什么',
+            id: '001'
+          }, {
+            title: 'vue是什么',
+            id: '001'
+          }, {
+            title: 'vue是什么',
+            id: '001'
+          }, {
+            title: 'vue是什么',
+            id: '001'
+          }, {
+            title: 'vue是什么',
+            id: '001'
+          }, {
+            title: 'vue是什么',
+            id: '001'
+          }, {
+            title: 'vue是什么',
+            id: '001'
+          }, ]
+        })
+      })
     }
     // ...
   },

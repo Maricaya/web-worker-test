@@ -1,13 +1,13 @@
 #main {
-    background: #123456;
-    color: red;
+  /* background: #123456; */
+  color: red;
 }
 .link-box {
-    display:flex;
-    &:hover {
-        background:green;
-    }
+  display: flex;
+  &:hover {
+    background: green;
+  }
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
