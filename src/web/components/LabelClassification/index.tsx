@@ -25,7 +25,9 @@ const LabelClassification: FC<ItagType> = () => {
   return (
     <div>
       {data.data.map((val: ItagType, key) => (
-        <span key={key}>{val.label}</span>
+        <span key={key} className="">
+          {val.label}
+        </span>
       ))}
     </div>
   );
