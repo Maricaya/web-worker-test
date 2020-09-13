@@ -19,91 +19,91 @@ module.exports = {
     port: 9000,
     historyApiFallback: true,
     open: true,
-    before(app, server, compiler) {
-      // do fancy stuff
-      app.get('/api/question/type', (req, res) => {
-        res.json({
-          data: [{
-              label: 'html',
-              value: 'html'
-            },
-            {
-              label: 'js',
-              value: 'js'
-            },
-            {
-              label: 'css',
-              value: 'css'
-            },
-            {
-              label: 'vue',
-              value: 'vue'
-            },
-            {
-              label: 'react',
-              value: 'react'
-            },
-            {
-              label: 'node',
-              value: 'node'
-            },
-            {
-              label: '工程化',
-              value: 'webpack'
-            },
-            {
-              label: '网络安全',
-              value: 'internet'
-            },
-            {
-              label: '算法',
-              value: 'suanfa'
-            },
-            {
-              label: '编程',
-              value: 'coding'
-            },
-            {
-              label: '其他',
-              value: 'other'
-            },
-          ],
-          status: 200,
-          msg: '成功'
-        })
-      })
+    // before(app, server, compiler) {
+    //   // do fancy stuff
+    //   app.get('/api/question/type', (req, res) => {
+    //     res.json({
+    // data: [{
+    //     label: 'html',
+    //     value: 'html'
+    //   },
+    //   {
+    //     label: 'js',
+    //     value: 'js'
+    //   },
+    //   {
+    //     label: 'css',
+    //     value: 'css'
+    //   },
+    //   {
+    //     label: 'vue',
+    //     value: 'vue'
+    //   },
+    //   {
+    //     label: 'react',
+    //     value: 'react'
+    //   },
+    //   {
+    //     label: 'node',
+    //     value: 'node'
+    //   },
+    //   {
+    //     label: '工程化',
+    //     value: 'webpack'
+    //   },
+    //   {
+    //     label: '网络安全',
+    //     value: 'internet'
+    //   },
+    //   {
+    //     label: '算法',
+    //     value: 'suanfa'
+    //   },
+    //   {
+    //     label: '编程',
+    //     value: 'coding'
+    //   },
+    //   {
+    //     label: '其他',
+    //     value: 'other'
+    //   },
+    // ],
+    //       status: 200,
+    //       msg: '成功'
+    //     })
+    //   })
 
-      app.get('/api/question/typeTab', (req, res) => {
-        res.json({
-          type: 'vue',
-          data: [{
-            title: 'vue是什么',
-            id: '001'
-          }, {
-            title: 'vue是什么',
-            id: '001'
-          }, {
-            title: 'vue是什么',
-            id: '001'
-          }, {
-            title: 'vue是什么',
-            id: '001'
-          }, {
-            title: 'vue是什么',
-            id: '001'
-          }, {
-            title: 'vue是什么',
-            id: '001'
-          }, {
-            title: 'vue是什么',
-            id: '001'
-          }, {
-            title: 'vue是什么',
-            id: '001'
-          }, ]
-        })
-      })
-    }
+    //   app.get('/api/question/typeTab', (req, res) => {
+    //     res.json({
+    //       type: 'vue',
+    //       data: [{
+    //         title: 'vue是什么',
+    //         id: '001'
+    //       }, {
+    //         title: 'vue是什么',
+    //         id: '001'
+    //       }, {
+    //         title: 'vue是什么',
+    //         id: '001'
+    //       }, {
+    //         title: 'vue是什么',
+    //         id: '001'
+    //       }, {
+    //         title: 'vue是什么',
+    //         id: '001'
+    //       }, {
+    //         title: 'vue是什么',
+    //         id: '001'
+    //       }, {
+    //         title: 'vue是什么',
+    //         id: '001'
+    //       }, {
+    //         title: 'vue是什么',
+    //         id: '001'
+    //       }, ]
+    //     })
+    //   })
+    // }
     // ...
   },
   output: {

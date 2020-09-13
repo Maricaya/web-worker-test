@@ -4,6 +4,7 @@ import { BrowserRouter, Link } from 'react-router-dom';
 // import { useRootData } from 'web/tools/useRootData';
 import Banner from '@components/Banner';
 import NavList from '@components/NavList';
+import Footer from '@components/Footer';
 import '@assets/styles/base.css';
 import RightBar from '../components/RightBar/index';
 import Swiper, { ItemProps } from '@components/Swiper';
@@ -29,6 +30,7 @@ const App = () => {
         {routes('')}
         <RightBar />
       </div>
+      <Footer />
     </BrowserRouter>
   );
 };

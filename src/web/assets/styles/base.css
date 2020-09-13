@@ -198,6 +198,7 @@ a {
 }
 .yd-base-content {
   width: 90%;
+  min-height: 600px;
   display: flex;
   justify-content: space-between;
   margin: 20px auto;

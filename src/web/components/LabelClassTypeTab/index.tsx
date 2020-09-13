@@ -8,16 +8,52 @@ type IList = {
 type Iprops = {
   value: string;
 };
+
+const mockData = [
+  {
+    title: 'vue是什么',
+    id: '001',
+  },
+  {
+    title: 'vue是什么',
+    id: '001',
+  },
+  {
+    title: 'vue是什么',
+    id: '001',
+  },
+  {
+    title: 'vue是什么',
+    id: '001',
+  },
+  {
+    title: 'vue是什么',
+    id: '001',
+  },
+  {
+    title: 'vue是什么',
+    id: '001',
+  },
+  {
+    title: 'vue是什么',
+    id: '001',
+  },
+  {
+    title: 'vue是什么',
+    id: '001',
+  },
+];
 const LabelClassTypeTab: FC<Iprops> = memo(
   ({ value }): JSX.Element => {
     const [typeList, setList] = useState<IList[]>();
     useEffect(() => {
       console.log('渲染了');
-      fetch('/api/question/typeTab')
-        .then((res) => res.json())
-        .then((res) => {
-          setList(res.data);
-        });
+      // fetch('/api/question/typeTab')
+      //   .then((res) => res.json())
+      //   .then((res) => {
+      //     setList(res.data);
+      //   });
+      setList(mockData);
     }, [value]);
 
     return (
