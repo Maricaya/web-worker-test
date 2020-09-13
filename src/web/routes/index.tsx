@@ -3,6 +3,7 @@ import { Route, Switch, RouteProps, Redirect } from 'react-router-dom';
 import Daily from '@components/DailyQuestion';
 import Loading from '@components/Loading';
 // import { string } from "prop-types";
+import LabelClassification from '@components/LabelClassification/index';
 const { lazy, Suspense } = React;
 
 const History = lazy(() =>
@@ -13,27 +14,33 @@ const Hot = lazy(() =>
 );
 interface YDProps extends RouteProps {
   auth?: boolean;
-  title?:string;
+  name: string;
 }
 export const routeLists: YDProps[] = [
   {
     path: '/',
     exact: true,
     component: Daily,
+    name: '每日一题',
     auth: true,
-    title: '每日一题'
   },
   {
     path: '/history',
+    name: '历史题目',
     exact: true,
     component: History,
-    title: '历史题目'
   },
   {
     path: '/hot',
+    name: '热门题目',
     exact: true,
     component: Hot,
-    title: '热门题目'
+  },
+  {
+    path: '/LabelClassification',
+    name: '类库专题',
+    exact: true,
+    component: LabelClassification,
   },
 ];
 

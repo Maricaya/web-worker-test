@@ -81,6 +81,7 @@
     "webpack-merge": "^5.1.4"
   },
   "dependencies": {
+    "antd": "^4.6.3",
     "awilix": "^4.2.6",
     "awilix-koa": "^4.0.0",
     "co": "^4.6.0",
