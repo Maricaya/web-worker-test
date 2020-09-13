@@ -47,7 +47,6 @@ const LabelClassTypeTab: FC<Iprops> = memo(
   ({ value }): JSX.Element => {
     const [typeList, setList] = useState<IList[]>();
     useEffect(() => {
-      console.log('渲染了');
       // fetch('/api/question/typeTab')
       //   .then((res) => res.json())
       //   .then((res) => {

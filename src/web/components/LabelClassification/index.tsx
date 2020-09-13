@@ -8,6 +8,11 @@ interface IData {
 }
 const mockData = [
   {
+    label: '全部',
+    value: 'all',
+    chose: true,
+  },
+  {
     label: 'html',
     value: 'html',
     chose: false,
