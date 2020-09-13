@@ -5,14 +5,14 @@ import './NavList';
 
 const NavList: FC = () => {
   return (
-    <div className="questionBank-navBar">
+    <div className="yd-questionBank-navBar">
       {routeLists.map((item, index) => {
         return (
           <div key={index}>
             <NavLink
               to={item.path as string}
               activeStyle={{ color: '#446d91' }}
-              className="navItem"
+              className="yd-navItem"
             >
               {item.name}
             </NavLink>

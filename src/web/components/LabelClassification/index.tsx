@@ -52,18 +52,20 @@ const LabelClassification: FC<ItagType> = (): JSX.Element => {
   }
   if (error) return <h1>null of data</h1>;
   return (
-    <div className="LabelClassification">
-      {tagList
-        ? tagList.map((val: ItagType, key: number) => (
-            <span
-              key={key}
-              className={`${val.chose ? 'light' : 'normal'} tabItem`}
-              onClick={() => setType(event, key, val)}
-            >
-              {val.label}
-            </span>
-          ))
-        : null}
+    <div className="yd-LabelClassification">
+      <div className="yd-tabItem-block">
+        {tagList
+          ? tagList.map((val: ItagType, key: number) => (
+              <span
+                key={key}
+                className={`${val.chose ? 'yd-light' : 'yd-normal'} yd-tabItem`}
+                onClick={() => setType(event, key, val)}
+              >
+                {val.label}
+              </span>
+            ))
+          : null}
+      </div>
       <LabelClassTypeTab value={tagType} />
     </div>
   );

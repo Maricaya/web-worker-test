@@ -1,22 +1,27 @@
-.LabelClassification {
-  padding-left: 20px;
-  & .tabItem {
-    display: inline-block;
-    padding: 10px 20px;
-    height: 20px;
-    text-align: center;
-    line-height: 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: inline-block;
-  }
-  & .light {
-    background: #446d91;
-    color: #fff;
-  }
-  & .normal {
-    background: #fff;
-    color: #333;
+.yd-LabelClassification {
+  & .yd-tabItem-block {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    & .yd-tabItem {
+      display: inline-block;
+      padding: 10px 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    & .yd-light {
+      background: #446d91;
+      color: #fff;
+    }
+    & .yd-normal {
+      background: #fff;
+      color: #333;
+    }
   }
 }

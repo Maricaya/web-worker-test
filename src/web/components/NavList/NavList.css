@@ -1,16 +1,19 @@
 :root {
   --theme: #333;
   --fontColor: #333;
+  --background: #ecfedd;
 }
 
-.questionBank-navBar {
+.yd-questionBank-navBar {
   display: flex;
   align-items: center;
   height: 100px;
+  background: var(--background);
   flex: 1;
+  padding-left: 30px;
   overflow: hidden;
-  & .navItem {
-    font-size: 100%;
+  & .yd-navItem {
+    font-size: 18px;
     display: inline-block;
     padding: 20px 40px;
     color: var(--fontColor);
