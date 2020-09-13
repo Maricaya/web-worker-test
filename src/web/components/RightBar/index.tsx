@@ -1,22 +1,31 @@
 import React, { FC } from 'react';
+import './RightBar.css';
 
+const data = [
+  { title: '最牛逼的前端聚集地', id: '001' },
+  { title: '最牛逼的前端聚集地', id: '001' },
+  { title: '最牛逼的前端聚集地', id: '001' },
+  { title: '最牛逼的前端聚集地', id: '001' },
+  { title: '最牛逼的前端聚集地', id: '001' },
+  { title: '最牛逼的前端聚集地', id: '001' },
+  { title: '最牛逼的前端聚集地', id: '001' },
+  { title: '最牛逼的前端聚集地', id: '001' },
+];
+type IList = {
+  title: string;
+  id: string;
+};
 const RightBar: FC = () => {
-  const data = [
-    { title: '最牛逼的学堂', id: '001' },
-    { title: '最牛逼的学堂', id: '001' },
-    { title: '最牛逼的学堂', id: '001' },
-    { title: '最牛逼的学堂', id: '001' },
-    { title: '最牛逼的学堂', id: '001' },
-    { title: '最牛逼的学堂', id: '001' },
-    { title: '最牛逼的学堂', id: '001' },
-    { title: '最牛逼的学堂', id: '001' },
-  ];
   return (
-    <div>
-      <span>贡献题目</span>
-      {data.map((item, index) => {
-        <span key={index}>{item.title}</span>;
-      })}
+    <div className="yd-right-bar">
+      <h2>贡献题目</h2>
+      <ul className="yd-right-content">
+        {data.map((item, index) => (
+          <li key={index} className="yd-right-list">
+            {item.title}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

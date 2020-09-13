@@ -1,0 +1,14 @@
+.yd-right-bar {
+  & h2 {
+    color: #333;
+    font-size: 17px;
+    padding: 25px 10px;
+  }
+  .yd-right-list {
+    margin: 10px auto;
+    padding-left: 10px;
+    min-height: 15px;
+    color: #000;
+    font-size: 14px;
+  }
+}
