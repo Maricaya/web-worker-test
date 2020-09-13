@@ -9,7 +9,19 @@ const App = () => {
   return (
     <BrowserRouter>
       <Banner />
+<<<<<<< HEAD
       <NavList />
+=======
+      <div className="link-box">
+      {routeLists.map((item, index) => {
+        return (
+          <div key={index}>
+            <Link to={item.path as string}>{item.title}</Link>;
+          </div>
+        );
+      })}
+      </div>
+>>>>>>> e14b7502f8d7c28b5f2f9202418b1c868793be6c
       {routes('')}
     </BrowserRouter>
   );
