@@ -7,4 +7,4 @@ bin
 tests
 examples
 *.js
-# src
+src

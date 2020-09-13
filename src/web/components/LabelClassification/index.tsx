@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useQuery } from 'react-query';
 
-type IData = {
+interface IData {
   [key: string]: string;
-};
-const LabelClassification: React.FC = () => {
+}
+interface ItagType extends IData {
+  label: string;
+  value: string;
+}
+const LabelClassification: FC<ItagType> = () => {
   const {
     isLoading,
     error,
@@ -18,6 +22,13 @@ const LabelClassification: React.FC = () => {
     return <h1>Loading...</h1>;
   }
   if (error) return <h1>你的数据木得了</h1>;
+  return (
+    <div>
+      {data.data.map((val: ItagType, key) => (
+        <span key={key}>{val.label}</span>
+      ))}
+    </div>
+  );
 };
 
 export default LabelClassification;
