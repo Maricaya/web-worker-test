@@ -44,7 +44,32 @@ const ssrDictionaries = {
 };
 app.use(
   router(async (_: any) => {
-    _.get("/", async (ctx: any, next: any) => {
+    _.get("/api", async (ctx: any, next: any) => {
+      let response = await axios({
+        method: "post",
+        url: "https://fc-api.yidengxuetang.com/exam/question/get",
+        responseType: "json",
+        responseEncoding: "utf8",
+        data: {
+          qid: 870,
+          uid: 0,
+        },
+      })
+      console.log(response.data);
+      ctx.body = {
+          data: {
+            msg: 'success',
+            result:{
+              ...response.data.result,
+              short_answer:{
+                ...response.data.result.short_answer,
+                analysis:''
+              }
+            },
+          }
+      }
+    });
+    _.get("/images", async (ctx: any, next: any) => {
       let response = await axios({
         method: "post",
         url: "https://fc-api.yidengxuetang.com/exam/question/get",
