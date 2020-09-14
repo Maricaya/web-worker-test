@@ -1,6 +1,6 @@
 :root {
   --theme: #333;
-  --fontColor: #333;
+  --fontColorNav: #333;
   --background: #ecfedd;
 }
 
@@ -16,7 +16,7 @@
     font-size: 18px;
     display: inline-block;
     padding: 20px 40px;
-    color: var(--fontColor);
+    color: var(--fontColorNav);
     text-decoration: none;
   }
   & :hover {
