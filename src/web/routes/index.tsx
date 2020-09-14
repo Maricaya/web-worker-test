@@ -18,7 +18,7 @@ interface YDProps extends RouteProps {
 }
 export const routeLists: YDProps[] = [
   {
-    path: '/Daily',
+    path: '/daily',
     exact: true,
     component: Daily,
     name: '每日一题',
@@ -37,7 +37,7 @@ export const routeLists: YDProps[] = [
     component: Hot,
   },
   {
-    path: '/LabelClassification',
+    path: '/labelClassification',
     name: '类库专题',
     exact: true,
     component: LabelClassification,

@@ -1,10 +1,10 @@
 :root {
-  --fontColorHistory: #f0e68c;
+  --fontColor: #abcdab;
 }
-.yd-components-hot {
+.yd-components-history {
   font-size: 18px;
   padding: 20px 10px;
-  color: var(--fontColorHistory);
+  color: var(--fontColor);
   h2 {
     margin: 0 0 10px 20px;
     &:hover {

@@ -1,12 +1,13 @@
 import React, { FC, useEffect, useState, memo } from 'react';
 import './LabelClassTypeTab.css';
 
-type IList = {
-  title: string;
-  id: string;
-};
-type Iprops = {
-  value: string;
+// type  = {
+//   title: string;
+//   id: string;
+// };
+type valType = {} | string | number | {}[];
+type IList<T> = {
+  [key: string]: T;
 };
 
 const mockData = [
@@ -43,9 +44,10 @@ const mockData = [
     id: '001',
   },
 ];
-const LabelClassTypeTab: FC<Iprops> = memo(
+type nativeEvents = React.ChangeEvent<MouseEvent>;
+const LabelClassTypeTab: FC<IList<valType>> = memo(
   ({ value }): JSX.Element => {
-    const [typeList, setList] = useState<IList[]>();
+    const [typeList, setList] = useState<IList<valType>[] | any>();
     useEffect(() => {
       // fetch('/api/question/typeTab')
       //   .then((res) => res.json())
@@ -54,7 +56,7 @@ const LabelClassTypeTab: FC<Iprops> = memo(
       //   });
       setList(mockData);
     }, [value]);
-
+    const clickHandle = (e: nativeEvents) => {};
     return (
       <ul className="yd-questionType-tab">
         {typeList

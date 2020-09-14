@@ -1,12 +1,14 @@
 // import "./banner.css";
-import * as React from 'react';
-const History: React.FC = () => {
+import React, { FC } from 'react';
+import LabelClassTypeTab from '../LabelClassTypeTab/index';
+import './HistoryQuestion.css';
+
+const History: FC = () => {
   return (
-    <>
-      <div className="components-history">
-        <span>history</span>
-      </div>
-    </>
+    <div className="yd-components-history">
+      <h2>历史题目</h2>
+      <LabelClassTypeTab />
+    </div>
   );
 };
 export default History;

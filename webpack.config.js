@@ -2,9 +2,16 @@ const argv = require('yargs-parser')(process.argv.slice(2));
 const _mode = argv.mode || 'development';
 const _modeFlag = _mode === 'production' ? true : false;
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
-const { merge } = require('webpack-merge');
-const { sync } = require('glob');
-const { resolve, join } = require('path');
+const {
+    merge
+} = require('webpack-merge');
+const {
+    sync
+} = require('glob');
+const {
+    resolve,
+    join
+} = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -18,25 +25,23 @@ let _entry = {
 let _plugins = [
     new ProgressBarPlugin(),
     new HtmlWebpackPlugin({
-        title: '京程一灯yd-react-generator',
+        title: 'yd-react-question-bank',
         filename: '../index.html',
         template: join(__dirname, `./src/web/index-${_modeFlag ? 'prod' : 'dev'}.html`),
     }),
     new MiniCssExtractPlugin({
-        filename: _modeFlag
-            ? 'styles/[name].[contenthash:5].css'
-            : 'styles/[name].css',
-        chunkFilename: _modeFlag
-            ? 'styles/[name].[contenthash:5].css'
-            : 'styles/[name].css',
+        filename: _modeFlag ?
+            'styles/[name].[contenthash:5].css' :
+            'styles/[name].css',
+        chunkFilename: _modeFlag ?
+            'styles/[name].[contenthash:5].css' :
+            'styles/[name].css',
     }),
     new CopyPlugin({
-      patterns: [
-        {
-          from: './lib',
-          to: '../lib',
-        },
-      ],
+        patterns: [{
+            from: './lib',
+            to: '../lib',
+        }, ],
     }),
 ];
 
@@ -66,8 +71,7 @@ const webpackConfig = {
     // plugins: [..._plugins, new HtmlAfterPlugin()],
     plugins: [..._plugins],
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(js|jsx|ts|tsx)$/,
                 include: [resolve('src')],
                 exclude: /node_modules/,
@@ -82,7 +86,12 @@ const webpackConfig = {
                 test: /\.css$/i,
                 use: [
                     _modeFlag ? MiniCssExtractPlugin.loader : 'style-loader',
-                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
                     'postcss-loader',
                 ],
             },

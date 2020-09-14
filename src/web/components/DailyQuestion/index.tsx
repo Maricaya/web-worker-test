@@ -1,10 +1,13 @@
 // import "./banner.css";
-import * as React from 'react';
+import React, { FC } from 'react';
+import LabelClassTypeTab from '../LabelClassTypeTab/index';
+import './DailyQuestion.css';
 
-const Daily: React.FC = () => {
+const Daily: FC = () => {
   return (
-    <div className="components-daily">
-      <span>daily</span>
+    <div className="yd-components-Daily">
+      <h2>每日一题</h2>
+      <LabelClassTypeTab />
     </div>
   );
 };
