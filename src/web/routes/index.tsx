@@ -18,7 +18,7 @@ interface YDProps extends RouteProps {
 }
 export const routeLists: YDProps[] = [
   {
-    path: '/daily',
+    path: '/Daily',
     exact: true,
     component: Daily,
     name: '每日一题',
@@ -62,6 +62,7 @@ const Routes = () => (
         );
       })}
       {/* <Route component={NotFound} /> */}
+      <Redirect from="/" to="/Daily" />
     </Switch>
   </Suspense>
 );

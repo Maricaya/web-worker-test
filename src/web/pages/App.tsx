@@ -22,7 +22,7 @@ const bannerItem: ItemProps[] = [
 const App = () => {
   //   const token = useRootData((store) => store.home.token);
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       {/* <Banner /> */}
       <Swiper imgItem={bannerItem} />
       <NavList />
