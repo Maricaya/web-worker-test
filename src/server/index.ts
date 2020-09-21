@@ -1,84 +1,84 @@
-const Koa = require("koa");
-const serve = require("koa-static");
-const render = require("koa-swig");
-const router = require("koa-simple-router");
+const Koa = require('koa');
+const serve = require('koa-static');
+const render = require('koa-swig');
+const router = require('koa-simple-router');
 // const assert = require("assert");
-const co = require("co");
+const co = require('co');
 // const serverEntry = require("../../dist/server-entry").default;
-const ReactDomServer = require("react-dom/server");
-const LRU = require("lru-cache");
-const axios = require("axios");
-const showdown = require("showdown");
+const ReactDomServer = require('react-dom/server');
+const LRU = require('lru-cache');
+const axios = require('axios');
+const showdown = require('showdown');
 const nodeHtmlToImage = require('node-html-to-image');
 
 const app = new Koa();
 const options = {
-  max: 500,
-  length: function (n: number, key: string | any[]) {
-    return n * 2 + key.length;
+    max: 500,
+    length: function(n: number, key: string | any[]) {
+      return n * 2 + key.length;
+    },
+    dispose: function(key: any, n: { close: () => void }) {
+      n.close();
+    },
+    maxAge: 1000 * 60 * 60,
   },
-  dispose: function (key: any, n: { close: () => void }) {
-    n.close();
-  },
-  maxAge: 1000 * 60 * 60,
-},
   cache = new LRU(options);
-app.use(serve(__dirname + "/assets"));
+app.use(serve(__dirname + '/assets'));
 app.context.render = co.wrap(
   render({
-    root: __dirname + "/views",
+    root: __dirname + '/views',
     autoescape: true,
     cache: false,
-    ext: "html",
+    ext: 'html',
     writeBody: false,
   })
 );
 const ssrDictionaries = {
-  "/": {
-    title: "🏃项目首页",
+  '/': {
+    title: '🏃项目首页',
   },
   demos: {
-    title: "🤮 测试页面",
+    title: '🤮 测试页面',
   },
 };
 app.use(
   router(async (_: any) => {
-    _.get("/api", async (ctx: any, next: any) => {
+    _.get('/api', async (ctx: any, next: any) => {
       let response = await axios({
-        method: "post",
-        url: "https://fc-api.yidengxuetang.com/exam/question/get",
-        responseType: "json",
-        responseEncoding: "utf8",
+        method: 'post',
+        url: 'https://fc-api.yidengxuetang.com/exam/question/get',
+        responseType: 'json',
+        responseEncoding: 'utf8',
         data: {
           qid: 870,
           uid: 0,
         },
-      })
+      });
       console.log(response.data);
       ctx.body = {
-          data: {
-            msg: 'success',
-            result:{
-              ...response.data.result,
-              short_answer:{
-                ...response.data.result.short_answer,
-                analysis:''
-              }
+        data: {
+          msg: 'success',
+          result: {
+            ...response.data.result,
+            short_answer: {
+              ...response.data.result.short_answer,
+              analysis: '',
             },
-          }
-      }
+          },
+        },
+      };
     });
-    _.get("/images", async (ctx: any, next: any) => {
+    _.get('/images', async (ctx: any, next: any) => {
       let response = await axios({
-        method: "post",
-        url: "https://fc-api.yidengxuetang.com/exam/question/get",
-        responseType: "json",
-        responseEncoding: "utf8",
+        method: 'post',
+        url: 'https://fc-api.yidengxuetang.com/exam/question/get',
+        responseType: 'json',
+        responseEncoding: 'utf8',
         data: {
           qid: 870,
           uid: 0,
         },
-      })
+      });
       console.log(response.data);
 
       let converter = new showdown.Converter();
@@ -115,16 +115,16 @@ app.use(
             ${html}
             </body>
           </html>`;
-      console.log(html)
+      console.log(html);
       let image = await nodeHtmlToImage({
         html,
-      })
+      });
       // console.log(image)
-      ctx.set('Content-Type', 'image/png' );
+      ctx.set('Content-Type', 'image/png');
       ctx.body = image;
     });
   })
 );
-app.listen(8082, () => {
-  console.log("图书管理平台启动成功📚");
+app.listen(3000, () => {
+  console.log('图书管理平台启动成功📚');
 });

@@ -4,7 +4,9 @@ import LabelClassTypeTab from '../LabelClassTypeTab/index';
 import './hotQuestion.css';
 
 const Hot: React.FC = () => {
-  useEffect(() => {});
+  useEffect(() => {
+    fetch('/api').then();
+  }, []);
   return (
     <div className="yd-components-hot">
       <h2>目前各大厂最火的前端面试真题都在这里</h2>

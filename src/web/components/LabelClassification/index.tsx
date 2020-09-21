@@ -82,7 +82,7 @@ const LabelClassification: FC<ItagType> = (): JSX.Element => {
   // });
 
   const [tagList, setList] = useState<ItagType[] | null>(null);
-  const [tagType, setPropsType] = useState<string>('');
+  const [tagType, setPropsType] = useState<object | string>({});
   // useQuery异步赋值
   // const { isLoading, error, data }: queryType = useQuery(
   //   'repoData',
@@ -100,10 +100,15 @@ const LabelClassification: FC<ItagType> = (): JSX.Element => {
   }, []);
   const a = useRef<string>(''); // 阻止相同标签导致重复渲染
   const propTypeEmit = (val) => {
-    a.current = val.value;
-    setPropsType(val);
+    a.current = val.value; // 使用ref记录选中的值
+    // setPropsType(val);
+    findList(val); // 查询list
   };
 
+  const findList = (val) => {
+    // fetch('/api').then()
+    // setPropsType({});
+  };
   //标签选中处理
   const setType = (e: tabEvent, key: number, val) => {
     setList(() => {
