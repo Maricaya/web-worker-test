@@ -1,20 +1,22 @@
 const { join,resolve } = require("path");
+const nodeExternals = require('webpack-node-externals');
+
 module.exports = {
     mode: "development",
     entry: {
-        app: join(__dirname, "../src/server/index.ts")
+        app: join(__dirname, "../src/server/index")
     },
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx|ts|tsx)$/,
-                include: [resolve("src")],
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            }
-        ]
-    },
-    externals: Object.keys(require("../package.json").dependencies),
+    // module: {
+    //     rules: [
+    //         {
+    //             test: /\.(js|jsx|ts|tsx)$/,
+    //             include: [resolve("src")],
+    //             exclude: /node_modules/,
+    //             loader: "babel-loader"
+    //         }
+    //     ]
+    // },
+    externals: [...Object.keys(require("../package.json").dependencies),nodeExternals()],
     resolve: {
         alias: {
             "@assets": resolve("src/web/assets"),

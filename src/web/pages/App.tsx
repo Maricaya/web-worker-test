@@ -1,6 +1,6 @@
 import React from 'react';
-import routes, { routeLists } from '@routes/index';
 import { BrowserRouter, Link } from 'react-router-dom';
+import routes, { routeLists } from '@routes/index';
 // import { useRootData } from 'web/tools/useRootData';
 import Banner from '@components/Banner';
 import NavList from '@components/NavList';
@@ -27,7 +27,7 @@ const App = () => {
       <Swiper imgItem={bannerItem} />
       <NavList />
       <div className="yd-base-content">
-        {routes('')}
+        {routes()}
         <RightBar />
       </div>
       <Footer />
