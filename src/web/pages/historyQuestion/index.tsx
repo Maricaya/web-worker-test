@@ -1,6 +1,6 @@
 // import "./banner.css";
 import React, { FC } from 'react';
-import LabelClassTypeTab from '../LabelClassTypeTab/index';
+import LabelClassTypeTab from '@components/LabelClassTypeTab/index';
 import './HistoryQuestion.css';
 
 const History: FC = () => {

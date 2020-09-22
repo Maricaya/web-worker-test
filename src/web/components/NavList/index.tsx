@@ -9,13 +9,14 @@ const NavList: FC = () => {
       {routeLists.map((item, index) => {
         return (
           <div key={index}>
-            <NavLink
+           {item?.hideNav?'':
+           (<NavLink
               to={item.path as string}
               activeStyle={{ color: '#446d91' }}
               className="yd-navItem"
             >
-              {item.name}
-            </NavLink>
+            {item.name}
+            </NavLink>)} 
           </div>
         );
       })}

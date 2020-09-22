@@ -1,6 +1,6 @@
 // import "./banner.css";
 import React, { useEffect } from 'react';
-import LabelClassTypeTab from '../LabelClassTypeTab/index';
+import LabelClassTypeTab from '@components/LabelClassTypeTab/index';
 import './hotQuestion.css';
 
 const Hot: React.FC = () => {

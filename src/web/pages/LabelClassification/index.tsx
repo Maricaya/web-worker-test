@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState, useRef } from 'react';
 import { useQuery } from 'react-query';
 import './LabelClassification.css';
-import LabelClassTypeTab from '../LabelClassTypeTab/index';
+import LabelClassTypeTab from '@components/LabelClassTypeTab/index';
 
 interface IData {
   [key: string]: string | boolean;
@@ -77,10 +77,6 @@ interface ItagType extends IData {
 type queryType = { isLoading: boolean; error: Error; data: any };
 
 const LabelClassification: FC<ItagType> = (): JSX.Element => {
-  // const getQuery = useCallback(() => {
-
-  // });
-
   const [tagList, setList] = useState<ItagType[] | null>(null);
   const [tagType, setPropsType] = useState<object | string>({});
   // useQuery异步赋值
