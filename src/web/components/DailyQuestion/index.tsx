@@ -1,5 +1,5 @@
 // import "./banner.css";
-import React, { FC ,useEffect} from 'react';
+import React, { FC ,useEffect,useState} from 'react';
 import LabelClassTypeTab from '../LabelClassTypeTab/index';
 import axios from "axios";
 import './DailyQuestion.css';
@@ -18,18 +18,21 @@ const Daily: FC = () => {
       });
     });
   }
+  const [data,setData] = useState<string>('')
   useEffect(() => {
-      axios.get("http://localhost:8082/api/images").then((response) => {
-        let img = new Image()
-
+      axios.get("http://localhost:8082/api/images?qid=870&uid=0",{responseType: 'blob'}).then((response) => {
+        console.log(response)
+        // data = response.data
+        const qrUrl = window.URL.createObjectURL(response.data)
+        setData(qrUrl)
+        console.log(qrUrl)
       });
   }, []);
-  let data ;
   return (
     <div className="yd-components-Daily">
-      
       <h2>每日一题</h2>
       <LabelClassTypeTab />
+      <img src={data} />
     </div>
   );
 };

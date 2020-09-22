@@ -30,19 +30,32 @@ app.use(serve(__dirname + "/assets"));
 
 const router = new Router();
 
+app.use(async (ctx, next)=> {
+  ctx.set('Access-Control-Allow-Origin', '*');
+  ctx.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+  ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  if (ctx.method == 'OPTIONS') {
+    ctx.body = 200; 
+  } else {
+    await next();
+  }
+});
+
 router.get("/api/images", async (ctx, next) => {
+  let qid = Number(ctx.query.qid);
+  let uid = Number(ctx.query.uid);
   let response = await axios.request(
     {
       method: 'post',
       url:"https://fc-api.yidengxuetang.com/exam/question/get",
       responseType: "json",
       data: {
-        qid: 870,
-        uid: 0,
+        qid,
+        uid,
       },
     }
   );
-  console.log(response.data);
+  // console.log(response.data);
 
   let converter = new showdown.Converter();
   let text = response.data.result.short_answer.analysis;
@@ -78,11 +91,10 @@ router.get("/api/images", async (ctx, next) => {
           ${html}
           </body>
         </html>`;
-  console.log(html);
+  // console.log(html);
   let image = await nodeHtmlToImage({
     html,
   });
-  // console.log(image)
   ctx.set("Content-Type", "image/png");
   ctx.body = image;
 });
@@ -98,7 +110,7 @@ router.get("/api/images", async (ctx, next) => {
 //   });
 // });
 
-// app.use(router.routes()).use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods());
 app.listen(8082, () => {
   console.log("图书管理平台启动成功📚");
 });
