@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState, memo } from 'react';
+import { useHistory } from 'react-router-dom';
 import './LabelClassTypeTab.css';
 
 // type  = {
@@ -56,12 +57,19 @@ const LabelClassTypeTab: FC<IList<valType>> = memo(
       //   });
       setList(mockData);
     }, [value]);
-    const clickHandle = (e: nativeEvents) => {};
+    const history = useHistory();
+    const pageToDetail = (e: nativeEvents, params) => {
+      history.push('/questionDetail');
+    };
     return (
       <ul className="yd-questionType-tab">
         {typeList
           ? typeList.map((item, index) => (
-              <li key={index} className="yd-questionType-list">
+              <li
+                key={index}
+                className="yd-questionType-list"
+                onClick={() => pageToDetail(event, item)}
+              >
                 {item.title}
               </li>
             ))
