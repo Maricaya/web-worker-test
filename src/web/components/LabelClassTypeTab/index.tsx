@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useState, memo } from 'react';
-import './LabelClassTypeTab.css';
+import React, { FC, useEffect, useState, memo } from "react";
+import "./LabelClassTypeTab.css";
 
 // type  = {
 //   title: string;
@@ -12,38 +12,47 @@ type IList<T> = {
 
 const mockData = [
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
 ];
+
 type nativeEvents = React.ChangeEvent<MouseEvent>;
 const LabelClassTypeTab: FC<IList<valType>> = memo(
   ({ value }): JSX.Element => {
