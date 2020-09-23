@@ -14,7 +14,13 @@ const QuestionDetail: FC<queryProps> = ({ qid, uid, title }): JSX.Element => {
   }, []);
 
   const queryDetails = async () => {
-    //setUrl('');
+    axios.get(`http://localhost:8082/api/images?qid=${qid}&uid=${uid}`, {
+        responseType: 'blob',
+      })
+      .then((response) => {
+        const qrUrl = window.URL.createObjectURL(response.data);
+        setUrl(qrUrl);
+      });
   };
 
   return (

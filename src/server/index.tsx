@@ -103,7 +103,7 @@ router.get('/api/images', async (ctx, next) => {
   ctx.body = image;
 });
 
-router.get("/api/list", async (ctx, next) => {
+router.get("/api/list/:type", async (ctx, next) => {
   const mockData = [
     {
       title: "vue是什么",
@@ -147,7 +147,7 @@ router.get("/api/list", async (ctx, next) => {
     },
   ];
   ctx.body = {
-    data: mockData
+    list: mockData
   }
 });
 
