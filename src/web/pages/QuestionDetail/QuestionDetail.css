@@ -1,0 +1,20 @@
+:root {
+  --DetailFontColor: #70dbdb;
+}
+.yd-question-detail {
+  font-size: 18px;
+  padding: 20px 10px;
+  color: var(--DetailFontColor);
+  h2 {
+    margin: 0 0 10px 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .yd-question-answer {
+    display: block;
+    width: 50%;
+    min-height: 200px;
+    background: #ccc;
+  }
+}

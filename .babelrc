@@ -16,6 +16,8 @@
       "libraryName": "antd",
       "libraryDirectory": "es",
       "style": "css"
-    }]
+    }],
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-transform-runtime"
   ]
 }

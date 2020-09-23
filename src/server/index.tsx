@@ -1,18 +1,18 @@
-import Koa from "koa";
-import serve from "koa-static";
-import Router from "@koa/router";
-import { matchPath } from "react-router-dom";
-import {routeLists} from '../web/routes';
+import Koa from 'koa';
+import serve from 'koa-static';
+import Router from '@koa/router';
+import { matchPath } from 'react-router-dom';
+import { routeLists } from '../web/routes';
 import { RootStoreType, createStore } from '@models/root.store';
 // const assert = require("assert");
-import co from "co";
-import LRU from "lru-cache";
+import co from 'co';
+import LRU from 'lru-cache';
 // const serverEntry = require("../../dist/server-entry").default;
-import React from "react";
-import ReactDomServer, { renderToString } from "react-dom/server";
-import axios from "axios";
-import showdown from "showdown";
-import nodeHtmlToImage from "node-html-to-image";
+import React from 'react';
+import ReactDomServer, { renderToString } from 'react-dom/server';
+import axios from 'axios';
+import showdown from 'showdown';
+import nodeHtmlToImage from 'node-html-to-image';
 
 const app = new Koa();
 // const options = {
@@ -26,22 +26,25 @@ const app = new Koa();
 //   maxAge: 1000 * 60 * 60,
 // };
 // const cache = new LRU(options);
-app.use(serve(__dirname + "/assets"));
+app.use(serve(__dirname + '/assets'));
 
 const router = new Router();
 
-app.use(async (ctx, next)=> {
+app.use(async (ctx, next) => {
   ctx.set('Access-Control-Allow-Origin', '*');
-  ctx.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+  ctx.set(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild'
+  );
   ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
   if (ctx.method == 'OPTIONS') {
-    ctx.body = 200; 
+    ctx.body = 200;
   } else {
     await next();
   }
 });
 
-router.get("/api/images", async (ctx, next) => {
+router.get('/api/images', async (ctx, next) => {
   let qid = Number(ctx.query.qid);
   let uid = Number(ctx.query.uid);
   // qid=870&uid=0
@@ -96,7 +99,7 @@ router.get("/api/images", async (ctx, next) => {
   let image = await nodeHtmlToImage({
     html,
   });
-  ctx.set("Content-Type", "image/png");
+  ctx.set('Content-Type', 'image/png');
   ctx.body = image;
 });
 
@@ -150,5 +153,5 @@ router.get("/api/list", async (ctx, next) => {
 
 app.use(router.routes()).use(router.allowedMethods());
 app.listen(8082, () => {
-  console.log("图书管理平台启动成功📚");
+  console.log('图书管理平台启动成功📚');
 });

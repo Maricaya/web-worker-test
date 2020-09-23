@@ -1,21 +1,26 @@
 import * as React from 'react';
 import { Route, Switch, RouteProps, Redirect } from 'react-router-dom';
-import Daily from '@components/DailyQuestion';
+import Daily from '@pages/dailyQuestion';
 import Loading from '@components/Loading';
 // import { string } from "prop-types";
-import LabelClassification from '@components/LabelClassification/index';
+import LabelClassification from '@pages/LabelClassification/index';
 const { lazy, Suspense } = React;
 
 const History = lazy(() =>
-  import(/* webpackChunkName:"demo" */ '@components/HistoryQuestion')
+  import(/* webpackChunkName:"History" */ '@pages/historyQuestion')
 );
 const Hot = lazy(() =>
-  import(/* webpackChunkName:"login" */ '@components/HotQuestion')
+  import(/* webpackChunkName:"Hot" */ '@pages/hotQuestion')
 );
+const QuestionDetail = lazy(() =>
+  import(/* webpackChunkName:"QuestionDetail"*/ '@pages/QuestionDetail')
+);
+
 interface YDProps extends RouteProps {
   auth?: boolean;
   name: string;
-  loadData?:any;
+  loadData?: any;
+  hideNav?: boolean;
 }
 export const routeLists: YDProps[] = [
   {
@@ -43,6 +48,13 @@ export const routeLists: YDProps[] = [
     name: '类库专题',
     exact: true,
     component: LabelClassification,
+  },
+  {
+    path: '/questionDetail',
+    name: '题目详情',
+    exact: true,
+    component: QuestionDetail,
+    hideNav: true,
   },
 ];
 
