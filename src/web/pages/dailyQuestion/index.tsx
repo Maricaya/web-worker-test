@@ -5,40 +5,23 @@ import axios from 'axios';
 import './DailyQuestion.css';
 
 const Daily: FC = () => {
-  const getData = (store: {
-    dispatch: (arg0: { type: string; payload: { data: any } }) => void;
-  }) => {
-    return new Promise((resolve) => {
-      axios.get('/api/images').then((response) => {
-        // store.dispatch({
-        //   type: "CHANGE_DATA",
-        //   payload: {
-        //     data: response.data.data,
-        //   },
-        // });
-        resolve(response);
-      });
-    });
-  };
-  const [data, setData] = useState<string>('');
+  const [list, setList] = useState<object>([]);
   useEffect(() => {
-    axios
-      .get('/api/images?qid=870&uid=0', {
-        responseType: 'blob',
-      })
-      .then((response) => {
-        console.log(response);
-        // data = response.data
-        const qrUrl = window.URL.createObjectURL(response.data);
-        setData(qrUrl);
-        console.log(qrUrl);
-      });
+    let data = getData('daily')
+    setList(data.list);
   }, []);
+  //可以抽出来
+  const getData = async (type: string):object =>{
+    let res = await axios.get(`http://localhost:8082/api/list/${type}`, {
+      responseType: 'json',
+    })
+    console.log(res.data)
+    return res.data
+  }
   return (
     <div className="yd-components-Daily">
       <h2>每日一题</h2>
-      <LabelClassTypeTab />
-      <img src={data} />
+      <LabelClassTypeTab list={list} />
     </div>
   );
 };

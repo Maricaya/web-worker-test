@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React, { FC, useEffect, useState, memo } from 'react';
 import { useHistory } from 'react-router-dom';
 import './LabelClassTypeTab.css';
+=======
+import React, { FC, useEffect, useState, memo } from "react";
+import "./LabelClassTypeTab.css";
+>>>>>>> 51e0878f315daa551e7d14bb3c1594ae31c80b61
 
 // type  = {
 //   title: string;
@@ -13,38 +18,47 @@ type IList<T> = {
 
 const mockData = [
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
   {
-    title: 'vue是什么',
-    id: '001',
+    title: "vue是什么",
+    qid: 870,
+    uid: 0,
   },
 ];
+
 type nativeEvents = React.ChangeEvent<MouseEvent>;
 const LabelClassTypeTab: FC<IList<valType>> = memo(
   ({ value }): JSX.Element => {
