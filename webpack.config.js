@@ -31,11 +31,9 @@ let _plugins = [
     }),
     new MiniCssExtractPlugin({
         filename: _modeFlag ?
-            'styles/[name].[contenthash:5].css' :
-            'styles/[name].css',
+            'styles/[name].[contenthash:5].css' : 'styles/[name].css',
         chunkFilename: _modeFlag ?
-            'styles/[name].[contenthash:5].css' :
-            'styles/[name].css',
+            'styles/[name].[contenthash:5].css' : 'styles/[name].css',
     }),
     new CopyPlugin({
         patterns: [{
@@ -109,6 +107,7 @@ const webpackConfig = {
     // },
     resolve: {
         alias: {
+            '*': resolve("typings/*"),
             '@assets': resolve('src/web/assets'),
             '@components': resolve('src/web/components'),
             '@models': resolve('src/web/models'),
