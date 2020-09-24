@@ -48,17 +48,15 @@ router.get('/api/images', async (ctx, next) => {
   let qid = Number(ctx.query.qid);
   let uid = Number(ctx.query.uid);
   // qid=870&uid=0
-  let response = await axios.request(
-    {
-      method: 'post',
-      url:"https://fc-api.yidengxuetang.com/exam/question/get",
-      responseType: "json",
-      data: {
-        qid,
-        uid,
-      },
-    }
-  );
+  let response = await axios.request({
+    method: 'post',
+    url: 'https://fc-api.yidengxuetang.com/exam/question/get',
+    responseType: 'json',
+    data: {
+      qid,
+      uid,
+    },
+  });
   // console.log(response.data);
 
   let converter = new showdown.Converter();
@@ -103,55 +101,55 @@ router.get('/api/images', async (ctx, next) => {
   ctx.body = image;
 });
 
-router.get("/api/list/:type", async (ctx, next) => {
+router.get('/api/list/:type', async (ctx, next) => {
   const mockData = [
     {
-      title: "vue是什么",
+      title: 'vue是什么',
       qid: 870,
       uid: 0,
     },
     {
-      title: "vue是什么",
+      title: 'vue是什么',
       qid: 870,
       uid: 0,
     },
     {
-      title: "vue是什么",
+      title: 'vue是什么',
       qid: 870,
       uid: 0,
     },
     {
-      title: "vue是什么",
+      title: 'vue是什么',
       qid: 870,
       uid: 0,
     },
     {
-      title: "vue是什么",
+      title: 'vue是什么',
       qid: 870,
       uid: 0,
     },
     {
-      title: "vue是什么",
+      title: 'vue是什么',
       qid: 870,
       uid: 0,
     },
     {
-      title: "vue是什么",
+      title: 'vue是什么',
       qid: 870,
       uid: 0,
     },
     {
-      title: "vue是什么",
+      title: 'vue是什么',
       qid: 870,
       uid: 0,
     },
   ];
   ctx.body = {
-    list: mockData
-  }
+    list: mockData,
+  };
 });
 
 app.use(router.routes()).use(router.allowedMethods());
-app.listen(8082, () => {
+app.listen(3000, () => {
   console.log('图书管理平台启动成功📚');
 });

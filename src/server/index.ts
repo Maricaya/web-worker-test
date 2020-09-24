@@ -68,15 +68,66 @@ app.use(
         },
       };
     });
-    _.get('/images', async (ctx: any, next: any) => {
+    _.get('/api/list/:type', async (ctx, next) => {
+      const mockData = [
+        {
+          title: 'vue是什么',
+          qid: 870,
+          uid: 0,
+        },
+        {
+          title: 'vue是什么',
+          qid: 870,
+          uid: 0,
+        },
+        {
+          title: 'vue是什么',
+          qid: 870,
+          uid: 0,
+        },
+        {
+          title: 'vue是什么',
+          qid: 870,
+          uid: 0,
+        },
+        {
+          title: 'vue是什么',
+          qid: 870,
+          uid: 0,
+        },
+        {
+          title: 'vue是什么',
+          qid: 870,
+          uid: 0,
+        },
+        {
+          title: 'vue是什么',
+          qid: 870,
+          uid: 0,
+        },
+        {
+          title: 'vue是什么',
+          qid: 870,
+          uid: 0,
+        },
+      ];
+      ctx.body = {
+        list: mockData,
+      };
+    });
+    _.get('/api/images', async (ctx: any, next: any) => {
+      let qid = Number(ctx.query.qid);
+      let uid = Number(ctx.query.uid);
       let response = await axios({
         method: 'post',
         url: 'https://fc-api.yidengxuetang.com/exam/question/get',
         responseType: 'json',
         responseEncoding: 'utf8',
         data: {
-          qid: 870,
-          uid: 0,
+          qid,
+          uid,
+          // qid: 870,
+          // uid: 0,
         },
       });
       console.log(response.data);
@@ -126,5 +177,5 @@ app.use(
   })
 );
 app.listen(3000, () => {
-  console.log('图书管理平台启动成功📚');
+  console.log('题库管理Service启动成功📚');
 });

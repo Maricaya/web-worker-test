@@ -12,9 +12,9 @@ const QuestionDetail: FC<queryProps> = ({ qid, uid, title }): JSX.Element => {
   useEffect(() => {
     queryDetails();
   }, []);
-
   const queryDetails = async () => {
-    axios.get(`http://localhost:8082/api/images?qid=${qid}&uid=${uid}`, {
+    axios
+      .get(`/api/images?qid=${qid}&uid=${uid}`, {
         responseType: 'blob',
       })
       .then((response) => {

@@ -17,6 +17,7 @@
     "typeRoots": ["typings", "./node_modules/@types"],
     "baseUrl": "./src",
     "paths": {
+      "*": ["typings/*"],
       "@components/*": ["web/components/*"],
       "@utils/*": ["web/utils/*"],
       "@assets/*": ["web/assets"],
@@ -26,6 +27,6 @@
       "@tools/*": ["web/tools/*"]
     }
   },
-  "include": ["src", "tests"],
+  "include": ["src", "tests", "typings"],
   "exclude": ["node_modules", "webpack.config.js", "gulpfile.js"]
 }

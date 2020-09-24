@@ -5,7 +5,7 @@ import './hotQuestion.css';
 
 const Hot: React.FC = () => {
   useEffect(() => {
-    fetch('/api').then();
+    fetch('/api/list/:type').then();
   }, []);
   return (
     <div className="yd-components-hot">

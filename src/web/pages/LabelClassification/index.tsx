@@ -116,10 +116,6 @@ const LabelClassification: FC<ItagType> = (): JSX.Element => {
     propTypeEmit(val);
   };
 
-  // if (isLoading) {
-  //   return <h1>Loading...</h1>;
-  // }
-  // if (error) return <h1>null of data</h1>;
   return (
     <div className="yd-LabelClassification">
       <div className="yd-tabItem-block">

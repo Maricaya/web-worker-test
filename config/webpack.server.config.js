@@ -1,4 +1,7 @@
-const { join,resolve } = require("path");
+const {
+    join,
+    resolve
+} = require("path");
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
@@ -6,17 +9,15 @@ module.exports = {
     entry: {
         app: join(__dirname, "../src/server/index")
     },
-    // module: {
-    //     rules: [
-    //         {
-    //             test: /\.(js|jsx|ts|tsx)$/,
-    //             include: [resolve("src")],
-    //             exclude: /node_modules/,
-    //             loader: "babel-loader"
-    //         }
-    //     ]
-    // },
-    externals: [...Object.keys(require("../package.json").dependencies),nodeExternals()],
+    module: {
+        rules: [{
+            test: /\.(js|jsx|ts|tsx)$/,
+            include: [resolve("src")],
+            exclude: /node_modules/,
+            loader: "babel-loader"
+        }]
+    },
+    externals: [...Object.keys(require("../package.json").dependencies), nodeExternals()],
     resolve: {
         alias: {
             "@assets": resolve("src/web/assets"),

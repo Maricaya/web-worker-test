@@ -15,5 +15,6 @@
         "no-unused-vars": "warn",
         "no-console": "off",
         "no-undef": "warn"
-    }
+    },
+    "parser": "@typescript-eslint/parser"
 }
