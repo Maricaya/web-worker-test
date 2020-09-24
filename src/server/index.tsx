@@ -3,8 +3,9 @@ import serve from 'koa-static';
 import Router from '@koa/router';
 import { matchPath } from 'react-router-dom';
 import { routeLists } from '../web/routes';
-import { RootStoreType, createStore } from '@models/root.store';
+// import { RootStoreType, createStore } from '@models/root.store';
 // const assert = require("assert");
+// import render from 'koa-swig';
 import co from 'co';
 import LRU from 'lru-cache';
 // const serverEntry = require("../../dist/server-entry").default;
@@ -13,6 +14,8 @@ import ReactDomServer, { renderToString } from 'react-dom/server';
 import axios from 'axios';
 import showdown from 'showdown';
 import nodeHtmlToImage from 'node-html-to-image';
+// import config from './config/index';
+// const { port, viewDir, memoryFlag, staticDir } = config;
 
 const app = new Koa();
 // const options = {
@@ -26,6 +29,16 @@ const app = new Koa();
 //   maxAge: 1000 * 60 * 60,
 // };
 // const cache = new LRU(options);
+
+// app.context.render = co.wrap(
+//   render<render.DefaultSettings>({
+//     root: viewDir,
+//     autoescape: true,
+//     cache: memoryFlag,
+//     writeBody: false,
+//     ext: 'html',
+//   })
+// );
 app.use(serve(__dirname + '/assets'));
 
 const router = new Router();
@@ -148,6 +161,10 @@ router.get('/api/list/:type', async (ctx, next) => {
     list: mockData,
   };
 });
+
+router.get(["/", "/Daily"],async (ctx, next) => {
+
+})
 
 app.use(router.routes()).use(router.allowedMethods());
 app.listen(3000, () => {
