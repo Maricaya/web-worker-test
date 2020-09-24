@@ -31,11 +31,11 @@ export const QuestionModel = types
       // let res = await axios.get(`/api/list/:${type}`, {
       //   responseType: 'json',
       // });
-      fetch(`/api/list/:${type}`)
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res.list);
-          self.list.push(...res.list);
-        });
+      // fetch(`/api/list/:${type}`)
+      //   .then((res) => res.json())
+      //   .then((res) => {
+      //     console.log(res.list);
+      //     self.list.push(...res.list);
+      //   });
     },
   }));
