@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './RightBar.css';
+import './Rightbar.css';
 
 const data = [
   { title: '最牛逼的前端聚集地', id: '001' },
