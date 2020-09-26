@@ -27,7 +27,7 @@ const QuestionDetail: FC = (): JSX.Element => {
   return (
     <div className="yd-question-detail">
       <h2>答案来啦</h2>
-      <p>{title}</p>
+      <p className="yd-question-title">{title}</p>
       <img className="yd-question-answer" src={baseUrl} alt="" />
     </div>
   );
