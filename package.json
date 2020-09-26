@@ -98,7 +98,6 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
-    "@koa/router": "^9.4.0",
     "antd": "^4.6.3",
     "assert": "^2.0.0",
     "awilix": "^4.2.6",
@@ -107,7 +106,7 @@
     "immutable": "^4.0.0-rc.12",
     "jest": "^26.4.2",
     "koa": "^2.13.0",
-    "koa-router": "^9.1.0",
+    "koa-router": "^9.4.0",
     "koa-static": "^5.0.0",
     "koa-swig": "^2.2.1",
     "koa2-connect-history-api-fallback": "^0.1.2",

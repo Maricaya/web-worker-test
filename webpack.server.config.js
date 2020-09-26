@@ -23,7 +23,7 @@ module.exports = {
         {
             test: /\.css$/i,
             use: [
-                _modeFlag ? MiniCssExtractPlugin.loader : 'style-loader',
+                 MiniCssExtractPlugin.loader ,
                 {
                     loader: 'css-loader',
                     options: {
