@@ -13,11 +13,16 @@ const LabelClassTypeTab: FC<IList<valType>> = memo(
   ({ value }): JSX.Element => {
     const [typeList, setList] = useState<IList<valType>[] | any>();
 
-    const { setUid, setQid, setTitle } = useRootData((store) => ({
-      setUid: store.QuestionSimple.setUid,
-      setQid: store.QuestionSimple.setQid,
-      setTitle: store.QuestionSimple.setTitle,
-    }));
+    const { setUid, setQid, setTitle, qid, uid, title } = useRootData(
+      (store) => ({
+        setUid: store.QuestionSimple.setUid,
+        setQid: store.QuestionSimple.setQid,
+        setTitle: store.QuestionSimple.setTitle,
+        qid: store.QuestionSimple.qid,
+        uid: store.QuestionSimple.uid,
+        title: store.QuestionSimple.title,
+      })
+    );
 
     useEffect(() => {
       setList(value);
@@ -32,7 +37,9 @@ const LabelClassTypeTab: FC<IList<valType>> = memo(
       await setUid(params.uid);
       await setQid(params.qid);
       await setTitle(params.title);
-      history.push('/questionDetail');
+      history.push(
+        `/questionDetail/${params.uid}/${params.qid}/${params.title}`
+      );
     };
 
     return (
