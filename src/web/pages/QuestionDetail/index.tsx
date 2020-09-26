@@ -1,14 +1,16 @@
 import React, { FC, useEffect, useState } from 'react';
+import { useRootData } from '@tools/useRootData';
 import axios from 'axios';
 import './QuestionDetail.css';
 
-type queryProps = {
-  qid: number;
-  uid: number;
-  title?: string;
-};
-const QuestionDetail: FC<queryProps> = ({ qid, uid, title }): JSX.Element => {
+const QuestionDetail: FC = (): JSX.Element => {
+  const { qid, uid, title } = useRootData((store) => ({
+    qid: store.QuestionSimple.qid,
+    uid: store.QuestionSimple.uid,
+    title: store.QuestionSimple.title,
+  }));
   const [baseUrl, setUrl] = useState<string>('');
+  console.log(qid, uid);
   useEffect(() => {
     queryDetails();
   }, []);

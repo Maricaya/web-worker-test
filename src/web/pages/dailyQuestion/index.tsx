@@ -6,23 +6,15 @@ import axios from 'axios';
 import './DailyQuestion.css';
 
 const Daily: FC = () => {
-  const { lists, qid, uid, getAllList, setUid, setQid } = useRootData(
-    (store) => ({
-      lists: store.QuestionModel.list,
-      qid: store.QuestionSimple.qid,
-      uid: store.QuestionSimple.uid,
-      setUid: store.QuestionSimple.setUid,
-      setQid: store.QuestionSimple.setQid,
-      getAllList: store.QuestionModel.getAllList,
-    })
-  );
-  const [list, setList] = useState<object>([]);
+  const [list, setList] = useState<[]>([]);
   useEffect(() => {
-    getAllList('type');
-    //setList(list);
+    getList();
   }, []);
   //可以抽出来
-
+  const getList = async () => {
+    let res = await axios.get('/api/list/:type', {});
+    setList(res.data.list);
+  };
   return (
     <div className="yd-components-Daily">
       <h2>每日一题</h2>

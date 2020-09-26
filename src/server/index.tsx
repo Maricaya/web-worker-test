@@ -70,7 +70,7 @@ router.get('/api/images', async (ctx, next) => {
       uid,
     },
   });
-  // console.log(response.data);
+  console.log(response);
 
   let converter = new showdown.Converter();
   let text = response.data.result.short_answer.analysis;
@@ -162,11 +162,9 @@ router.get('/api/list/:type', async (ctx, next) => {
   };
 });
 
-router.get(["/", "/Daily"],async (ctx, next) => {
-
-})
+router.get(['/', '/Daily'], async (ctx, next) => {});
 
 app.use(router.routes()).use(router.allowedMethods());
 app.listen(3000, () => {
-  console.log('图书管理平台启动成功📚');
+  console.log('题库平台启动成功📚');
 });
