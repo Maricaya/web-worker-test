@@ -10,26 +10,30 @@ const QuestionDetail: FC = (): JSX.Element => {
     title: store.QuestionSimple.title,
   }));
   const [baseUrl, setUrl] = useState<string>('');
+  const [answerFlag,setAnswerFlag] = useState<boolean>(true);
   console.log(qid, uid);
   useEffect(() => {
     queryDetails();
   }, []);
   const queryDetails = async () => {
-    axios
+    let response = await axios
       .get(`/api/images?qid=${qid}&uid=${uid}`, {
         responseType: 'blob',
       })
-      .then((response) => {
-        const qrUrl = window.URL.createObjectURL(response.data);
-        setUrl(qrUrl);
-      });
+    const qrUrl = window.URL.createObjectURL(response.data);
+    setUrl(qrUrl);
   };
-
+  const showQuestion = ()=>{
+    setAnswerFlag(false);
+  }
   return (
     <div className="yd-question-detail">
-      <h2>答案来啦</h2>
-      <p>{title}</p>
-      <img className="yd-question-answer" src={baseUrl} alt="" />
+      <h2>{title}</h2>
+      {/* <p>{title}</p> */}
+      <div className="yd-question-answer">
+        <p className={answerFlag ? 'yd-question-answer-hide showQuestion' : 'yd-question-answer-hide'} onClick={()=>showQuestion()}>点击查看答案&解析</p>
+        <img className={answerFlag ? 'yd-question-answer-show' : 'yd-question-answer-show showQuestion'} src={baseUrl}  />
+      </div>
     </div>
   );
 };
