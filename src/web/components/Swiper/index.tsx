@@ -30,8 +30,8 @@ const Swiper:React.FunctionComponent<SwiperProps> = ({
   },[]);
 
   return (
-    <div className="swiper-container swiper-pagination">
-      <ul>
+    <div className="swiper-container">
+      <ul className="swiper-item">
         {
           imgItem?.map((v,i) =>(
               <li key={v.title} className={i === count ? 'active' : null}>
@@ -41,7 +41,7 @@ const Swiper:React.FunctionComponent<SwiperProps> = ({
           )
         }
       </ul>
-      <ol>
+      <ol className="swiper-pagination">
         {imgItem?.map((v,i) =>
           (<li key={i} onClick={() => setCount(i)} className={i === count ? 'active' : null}/>)
         )}

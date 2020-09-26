@@ -50,7 +50,7 @@ export const routeLists: YDProps[] = [
     component: LabelClassification,
   },
   {
-    path: '/questionDetail',
+    path: '/questionDetail/:uid/:qid/:title',
     name: '题目详情',
     exact: true,
     component: QuestionDetail,
