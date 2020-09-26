@@ -1,70 +1,71 @@
-import Koa from 'koa';
-import serve from 'koa-static';
-import Router from '@koa/router';
-import { matchPath } from 'react-router-dom';
-import { routeLists } from '../web/routes';
+import Koa from "koa";
+import serve from "koa-static";
+import Router from "@koa/router";
+import { matchPath } from "react-router-dom";
+import App from "../web/pages/App-server";
 // import { RootStoreType, createStore } from '@models/root.store';
-// const assert = require("assert");
-// import render from 'koa-swig';
-import co from 'co';
-import LRU from 'lru-cache';
+import assert from "assert";
+import render from "koa-swig";
+import co from "co";
+import LRU from "lru-cache";
 // const serverEntry = require("../../dist/server-entry").default;
-import React from 'react';
-import ReactDomServer, { renderToString } from 'react-dom/server';
-import axios from 'axios';
-import showdown from 'showdown';
-import nodeHtmlToImage from 'node-html-to-image';
-// import config from './config/index';
-// const { port, viewDir, memoryFlag, staticDir } = config;
+import React from "react";
+import ReactDomServer, { renderToString } from "react-dom/server";
+import axios from "axios";
+import showdown from "showdown";
+import nodeHtmlToImage from "node-html-to-image";
+import config from "./config/index";
+import { string } from "mobx-state-tree/dist/internal";
+const { port, memoryFlag, staticDir } = config;
 
 const app = new Koa();
-// const options = {
-//   max: 500,
-//   length: function (n: number, key: string | any[]) {
-//     return n * 2 + key.length;
-//   },
-//   dispose: function (key: any, n: { close: () => void }) {
-//     n.close();
-//   },
-//   maxAge: 1000 * 60 * 60,
-// };
-// const cache = new LRU(options);
+const options = {
+  max: 500,
+  length: function(n: number, key: string | any[]) {
+    return n * 2 + key.length;
+  },
+  dispose: function(key: any, n: { close: () => void }) {
+    n.close();
+  },
+  maxAge: 1000 * 60 * 60,
+};
+const cache = new LRU(options);
 
-// app.context.render = co.wrap(
-//   render<render.DefaultSettings>({
-//     root: viewDir,
-//     autoescape: true,
-//     cache: memoryFlag,
-//     writeBody: false,
-//     ext: 'html',
-//   })
-// );
-app.use(serve(__dirname + '/assets'));
+app.context.render = co.wrap(
+  render<render.DefaultSettings>({
+    root: __dirname,
+    autoescape: true,
+    cache: memoryFlag,
+    writeBody: false,
+    ext: "html",
+  })
+);
+app.use(serve(__dirname + "/assets"));
 
 const router = new Router();
 
 app.use(async (ctx, next) => {
-  ctx.set('Access-Control-Allow-Origin', '*');
+  ctx.set("Access-Control-Allow-Origin", "*");
   ctx.set(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild'
+    "Access-Control-Allow-Headers",
+    "Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild"
   );
-  ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-  if (ctx.method == 'OPTIONS') {
+  ctx.set("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+  if (ctx.method == "OPTIONS") {
     ctx.body = 200;
   } else {
     await next();
   }
 });
 
-router.get('/api/images', async (ctx, next) => {
+router.get("/api/images", async (ctx, next) => {
   let qid = Number(ctx.query.qid);
   let uid = Number(ctx.query.uid);
   // qid=870&uid=0
   let response = await axios.request({
-    method: 'post',
-    url: 'https://fc-api.yidengxuetang.com/exam/question/get',
-    responseType: 'json',
+    method: "post",
+    url: "https://fc-api.yidengxuetang.com/exam/question/get",
+    responseType: "json",
     data: {
       qid,
       uid,
@@ -73,7 +74,7 @@ router.get('/api/images', async (ctx, next) => {
   console.log(response);
 
   let converter = new showdown.Converter();
-  let text = response.data.result.short_answer.analysis;
+  let text = response.data.result.short_answer?.analysis;
   let html = converter.makeHtml(text);
   html = `<html>
           <head>
@@ -110,49 +111,49 @@ router.get('/api/images', async (ctx, next) => {
   let image = await nodeHtmlToImage({
     html,
   });
-  ctx.set('Content-Type', 'image/png');
+  ctx.set("Content-Type", "image/png");
   ctx.body = image;
 });
 
-router.get('/api/list/:type', async (ctx, next) => {
+router.get("/api/list/:type", async (ctx, next) => {
   const mockData = [
     {
-      title: 'vue是什么',
+      title: "vue是什么",
       qid: 870,
       uid: 0,
     },
     {
-      title: 'vue是什么',
+      title: "vue是什么",
       qid: 870,
       uid: 0,
     },
     {
-      title: 'vue是什么',
+      title: "vue是什么",
       qid: 870,
       uid: 0,
     },
     {
-      title: 'vue是什么',
+      title: "vue是什么",
       qid: 870,
       uid: 0,
     },
     {
-      title: 'vue是什么',
+      title: "vue是什么",
       qid: 870,
       uid: 0,
     },
     {
-      title: 'vue是什么',
+      title: "vue是什么",
       qid: 870,
       uid: 0,
     },
     {
-      title: 'vue是什么',
+      title: "vue是什么",
       qid: 870,
       uid: 0,
     },
     {
-      title: 'vue是什么',
+      title: "vue是什么",
       qid: 870,
       uid: 0,
     },
@@ -162,9 +163,36 @@ router.get('/api/list/:type', async (ctx, next) => {
   };
 });
 
-router.get(['/', '/Daily'], async (ctx, next) => {});
+router.get("/:controller?/:action?", async (ctx, next) => {
+  // console.log("输出路由", ctx.params.controller);
+  // const _controller = ctx.params.controller || "/";
+  // const title = "首页";
+  // const result = await ctx.render("index", {
+  //   title,
+  // });
+  // let appString:any;
+  // console.log("得到缓存 🌺", cache.get(_controller));
+  // if (cache.get(_controller)) {
+  //   // 协商依次缓存
+  //   console.log("命中缓存 🌺");
+  //   appString = cache.get(_controller);
+  // } else {
+  //   appString = ReactDomServer.renderToString(App(ctx.req.url));
+  //   const _cache = cache.get(_controller);
+  //   if (_cache) {
+  //     // if (assert.equal(cache.get(_controller), appString) == false) {
+  //     //   cache.set(_controller, appString);
+  //     // }
+  //   } else {
+  //     console.log("种缓存 🌺");
+  //     cache.set(_controller, appString);
+  //   }
+  // }
+  // // const stream = ReactDomServer.renderToStream(serverEntry(ctx.req.url));
+  // ctx.body = result.replace("<app/>", appString);
+});
 
 app.use(router.routes()).use(router.allowedMethods());
 app.listen(3000, () => {
-  console.log('题库平台启动成功📚');
+  console.log("图书管理平台启动成功📚");
 });

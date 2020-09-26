@@ -100,6 +100,7 @@
   "dependencies": {
     "@koa/router": "^9.4.0",
     "antd": "^4.6.3",
+    "assert": "^2.0.0",
     "awilix": "^4.2.6",
     "awilix-koa": "^4.0.0",
     "co": "^4.6.0",
