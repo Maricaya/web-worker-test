@@ -32,4 +32,10 @@
       display: block;
     }
   }
+  .yd-question-title {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    margin-left: 20px;
+    font-weight: 900;
+  }
 }

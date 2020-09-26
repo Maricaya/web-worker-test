@@ -194,5 +194,5 @@ router.get("/:controller?/:action?", async (ctx, next) => {
 
 app.use(router.routes()).use(router.allowedMethods());
 app.listen(3000, () => {
-  console.log("图书管理平台启动成功📚");
+  console.log("题库平台启动成功📚");
 });
