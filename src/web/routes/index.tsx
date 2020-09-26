@@ -3,7 +3,7 @@ import { Route, Switch, RouteProps, Redirect } from 'react-router-dom';
 import Daily from '@pages/dailyQuestion';
 import Loading from '@components/Loading';
 // import { string } from "prop-types";
-import LabelClassification from '@pages/LabelClassification/index';
+import LabelClassification from '@pages/LabelClassification';
 const { lazy, Suspense } = React;
 
 const History = lazy(() =>
