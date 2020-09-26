@@ -8,7 +8,7 @@
   h2 {
     padding: 30px;
     text-align: center;
-    background:#765f7b;
+    background: #765f7b;
   }
   .yd-question-answer {
     display: block;
@@ -17,16 +17,16 @@
     color: #333;
     text-align: center;
     .yd-question-answer-hide {
-      height:100px;
-      line-height:100px;
-      display:none;
+      height: 100px;
+      line-height: 100px;
+      display: none;
       &:hover {
         cursor: pointer;
       }
     }
     .yd-question-answer-show {
-      width:100%;
-      display:none;
+      width: 100%;
+      display: none;
     }
     .showQuestion {
       display: block;

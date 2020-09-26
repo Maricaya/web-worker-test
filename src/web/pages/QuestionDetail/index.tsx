@@ -6,9 +6,14 @@ import './QuestionDetail.css';
 type HistoryType = {
   location: object;
 };
-
+type unionBase = string | number;
+type HistoryParam<T> = {
+  uid?: T;
+  qid?: T;
+  title?: T;
+};
 const QuestionDetail: FC<HistoryType> = ({ location }): JSX.Element => {
-  const { uid, qid, title }: Question.QuestionDetail = useParams();
+  const { uid, qid, title }: HistoryParam<unionBase> = useParams();
   const [baseUrl, setUrl] = useState<string>('');
   const [answerFlag, setAnswerFlag] = useState<boolean>(true);
 
