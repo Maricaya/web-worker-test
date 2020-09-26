@@ -76,7 +76,7 @@ const Routes = () => (
         );
       })}
       {/* <Route component={NotFound} /> */}
-      <Redirect from="/" to="/Daily" />
+      <Redirect from="/" to="/daily" />
     </Switch>
   </Suspense>
 );

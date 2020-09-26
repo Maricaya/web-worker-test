@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './QuestionDetail.css';
 
@@ -14,6 +14,10 @@ type HistoryParam<T> = {
 };
 const QuestionDetail: FC<HistoryType> = ({ location }): JSX.Element => {
   const { uid, qid, title }: HistoryParam<unionBase> = useParams();
+  const history = useHistory();
+  if(!uid && !qid && !title) {
+    history.push('/');
+  }
   const [baseUrl, setUrl] = useState<string>('');
   const [answerFlag, setAnswerFlag] = useState<boolean>(true);
 
