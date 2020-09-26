@@ -1,79 +1,44 @@
 import React, { FC, useEffect, useState, memo } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useRootData } from '@tools/useRootData';
 import './LabelClassTypeTab.css';
 
-// type  = {
-//   title: string;
-//   id: string;
-// };
 type valType = {} | string | number | {}[];
 type IList<T> = {
   [key: string]: T;
 };
 
-const mockData = [
-  {
-    title: 'vue是什么',
-    qid: 870,
-    uid: 0,
-  },
-  {
-    title: 'vue是什么',
-    qid: 870,
-    uid: 0,
-  },
-  {
-    title: 'vue是什么',
-    qid: 870,
-    uid: 0,
-  },
-  {
-    title: 'vue是什么',
-    qid: 870,
-    uid: 0,
-  },
-  {
-    title: 'vue是什么',
-    qid: 870,
-    uid: 0,
-  },
-  {
-    title: 'vue是什么',
-    qid: 870,
-    uid: 0,
-  },
-  {
-    title: 'vue是什么',
-    qid: 870,
-    uid: 0,
-  },
-  {
-    title: 'vue是什么',
-    qid: 870,
-    uid: 0,
-  },
-];
-
 type nativeEvents = React.ChangeEvent<MouseEvent>;
 const LabelClassTypeTab: FC<IList<valType>> = memo(
   ({ value }): JSX.Element => {
     const [typeList, setList] = useState<IList<valType>[] | any>();
+
+    const { setUid, setQid, setTitle } = useRootData((store) => ({
+      setUid: store.QuestionSimple.setUid,
+      setQid: store.QuestionSimple.setQid,
+      setTitle: store.QuestionSimple.setTitle,
+    }));
+
     useEffect(() => {
-      // fetch('/api/question/typeTab')
-      //   .then((res) => res.json())
-      //   .then((res) => {
-      //     setList(res.data);
-      //   });
-      setList(mockData);
+      setList(value);
     }, [value]);
+
     const history = useHistory();
-    const pageToDetail = (e: nativeEvents, params) => {
+
+    const pageToDetail = async (
+      e: nativeEvents,
+      params: Question.QuestionDetail
+    ) => {
+      await setUid(params.uid);
+      await setQid(params.qid);
+      await setTitle(params.title);
       history.push('/questionDetail');
     };
+
     return (
       <ul className="yd-questionType-tab">
         {typeList
-          ? typeList.map((item, index) => (
+          ? typeList.map((item: Question.QuestionDetail, index: number) => (
               <li
                 key={index}
                 className="yd-questionType-list"

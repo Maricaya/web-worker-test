@@ -78,7 +78,7 @@ type queryType = { isLoading: boolean; error: Error; data: any };
 
 const LabelClassification: FC<ItagType> = (): JSX.Element => {
   const [tagList, setList] = useState<ItagType[] | null>(null);
-  const [tagType, setPropsType] = useState<object | string>({});
+  const [tagType, setPropsType] = useState<Array | string>([]);
   // useQuery异步赋值
   // const { isLoading, error, data }: queryType = useQuery(
   //   'repoData',

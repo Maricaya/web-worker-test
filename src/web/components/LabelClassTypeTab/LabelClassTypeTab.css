@@ -8,5 +8,8 @@
     &:nth-of-type(1) {
       border-top: 1px solid #ddd;
     }
+    &:hover {
+      background: rgba(0, 130, 125, 0.1);
+    }
   }
 }

@@ -1,20 +1,12 @@
 import * as React from 'react';
 import { Route, Switch, RouteProps, Redirect } from 'react-router-dom';
 import Daily from '@pages/dailyQuestion';
-import Loading from '@components/Loading';
 // import { string } from "prop-types";
-import LabelClassification from '@pages/LabelClassification';
-const { lazy, Suspense } = React;
+import LabelClassification from '@pages/LabelClassification/index';
 
-const History = lazy(() =>
-  import(/* webpackChunkName:"History" */ '@pages/historyQuestion')
-);
-const Hot = lazy(() =>
-  import(/* webpackChunkName:"Hot" */ '@pages/hotQuestion')
-);
-const QuestionDetail = lazy(() =>
-  import(/* webpackChunkName:"QuestionDetail"*/ '@pages/QuestionDetail')
-);
+import History from '@pages/historyQuestion';
+import Hot from '@pages/hotQuestion';
+import QuestionDetail from '@pages/QuestionDetail';
 
 interface YDProps extends RouteProps {
   auth?: boolean;
@@ -60,25 +52,23 @@ export const routeLists: YDProps[] = [
 
 // 对状态属性进行监听
 const Routes = () => (
-  <Suspense fallback={<Loading />}>
-    <Switch>
-      {routeLists.map((r, index) => {
-        console.log('🍊', index);
-        const { path, exact, component } = r;
-        const LazyCom = component;
-        return (
-          <Route
-            key={index}
-            path={path}
-            exact={exact}
-            render={(props) => <LazyCom {...props} />}
-          />
-        );
-      })}
-      {/* <Route component={NotFound} /> */}
-      <Redirect from="/" to="/Daily" />
-    </Switch>
-  </Suspense>
+  <Switch>
+    {routeLists.map((r, index) => {
+      console.log('🍊', index);
+      const { path, exact, component } = r;
+      const LazyCom = component;
+      return (
+        <Route
+          key={index}
+          path={path}
+          exact={exact}
+          render={(props) => <LazyCom {...props} />}
+        />
+      );
+    })}
+    {/* <Route component={NotFound} /> */}
+    <Redirect from="/" to="/Daily" />
+  </Switch>
 );
 
 export default Routes;
