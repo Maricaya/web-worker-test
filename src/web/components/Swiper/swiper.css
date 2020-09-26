@@ -1,23 +1,23 @@
-:root{
+:root {
   --con-width: 1200px;
   /*主题色，后期可以换*/
   --theme-color: skyblue;
 }
 
-.swiper-container{
-  overflow:hidden;
+.swiper-container {
+  overflow: hidden;
   min-width: var(--con-width);
   position: relative;
-  ul,ol{
+  ul,ol {
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  ul{
+  .swiper-item {
     list-style: none;
     margin: 0;
     height: 283px;
-    li{
+    li {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -25,32 +25,32 @@
       z-index: 0;
       transition: opacity 1s;
       opacity: 0;
-      &.active{
+      &.active {
         opacity: 1;
         z-index: 1;
       }
     }
   }
 
-  ol{
+  .swiper-pagination {
     list-style: none;
     position: absolute;
     bottom: 10px;
     z-index: 10;
     text-align: center;
     width: 100%;
-    li{
+    li {
       display: inline-block;
       width: 20px;
       height: 6px;
-      background-color: rgba(255,255,255,0.8);
+      background-color: rgba(255, 255, 255, 0.8);
       margin: 0 7px;
       transition: background-color 1s;
       cursor: pointer;
-      &.active{
-         background-color: var(--theme-color);
+      &.active {
+        background-color: var(--theme-color);
       }
     }
   }
-}
 
+}
