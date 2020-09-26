@@ -25,7 +25,6 @@ const LabelClassTypeTab: FC<IList<valType>> = memo(
       e: nativeEvents,
       params: Question.QuestionDetail
     ) => {
-      console.log(params);
       await setUid(params.uid);
       await setQid(params.qid);
       await setTitle(params.title);

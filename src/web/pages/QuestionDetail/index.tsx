@@ -10,7 +10,6 @@ const QuestionDetail: FC = (): JSX.Element => {
     title: store.QuestionSimple.title,
   }));
   const [baseUrl, setUrl] = useState<string>('');
-  console.log(qid, uid);
   useEffect(() => {
     queryDetails();
   }, []);

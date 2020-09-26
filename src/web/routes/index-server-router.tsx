@@ -8,7 +8,6 @@ import History from '@pages/historyQuestion';
 import Hot from '@pages/hotQuestion';
 import QuestionDetail from '@pages/QuestionDetail';
 
-
 interface YDProps extends RouteProps {
   auth?: boolean;
   name: string;
@@ -53,23 +52,23 @@ export const routeLists: YDProps[] = [
 
 // 对状态属性进行监听
 const Routes = () => (
-    <Switch>
-      {routeLists.map((r, index) => {
-        console.log('🍊', index);
-        const { path, exact, component } = r;
-        const LazyCom = component;
-        return (
-          <Route
-            key={index}
-            path={path}
-            exact={exact}
-            render={(props) => <LazyCom {...props} />}
-          />
-        );
-      })}
-      {/* <Route component={NotFound} /> */}
-      <Redirect from="/" to="/Daily" />
-    </Switch>
+  <Switch>
+    {routeLists.map((r, index) => {
+      console.log('🍊', index);
+      const { path, exact, component } = r;
+      const LazyCom = component;
+      return (
+        <Route
+          key={index}
+          path={path}
+          exact={exact}
+          render={(props) => <LazyCom {...props} />}
+        />
+      );
+    })}
+    {/* <Route component={NotFound} /> */}
+    <Redirect from="/" to="/Daily" />
+  </Switch>
 );
 
 export default Routes;
