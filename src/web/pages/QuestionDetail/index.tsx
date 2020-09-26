@@ -1,17 +1,24 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useRootData } from '@tools/useRootData';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './QuestionDetail.css';
 
-const QuestionDetail: FC = (): JSX.Element => {
-  const { qid, uid, title } = useRootData((store) => ({
-    qid: store.QuestionSimple.qid,
-    uid: store.QuestionSimple.uid,
-    title: store.QuestionSimple.title,
-  }));
+type HistoryType = {
+  location: object;
+};
+const QuestionDetail: FC<HistoryType> = ({ location }): JSX.Element => {
+  // console.log(location);
+  const { uid, qid, title } = useParams();
+  console.log(uid, qid, title);
+  // const { qid, uid, title } = useRootData((store) => ({
+  //   qid: store.QuestionSimple.qid,
+  //   uid: store.QuestionSimple.uid,
+  //   title: store.QuestionSimple.title,
+  // }));
   const [baseUrl, setUrl] = useState<string>('');
   const [answerFlag, setAnswerFlag] = useState<boolean>(true);
-  console.log(qid, uid);
+
   useEffect(() => {
     queryDetails();
   }, []);
