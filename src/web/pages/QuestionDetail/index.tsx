@@ -10,7 +10,7 @@ type unionBase = string | number;
 type HistoryParam<T> = {
   uid?: T;
   qid?: T;
-  title?: T;
+  title?: string;
 };
 const QuestionDetail: FC<HistoryType> = ({ location }): JSX.Element => {
   const { uid, qid, title }: HistoryParam<unionBase> = useParams();
