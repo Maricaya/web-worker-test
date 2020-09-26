@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useRootData } from '@tools/useRootData';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './QuestionDetail.css';
@@ -7,15 +6,9 @@ import './QuestionDetail.css';
 type HistoryType = {
   location: object;
 };
+
 const QuestionDetail: FC<HistoryType> = ({ location }): JSX.Element => {
-  // console.log(location);
-  const { uid, qid, title } = useParams();
-  console.log(uid, qid, title);
-  // const { qid, uid, title } = useRootData((store) => ({
-  //   qid: store.QuestionSimple.qid,
-  //   uid: store.QuestionSimple.uid,
-  //   title: store.QuestionSimple.title,
-  // }));
+  const { uid, qid, title }: Question.QuestionDetail = useParams();
   const [baseUrl, setUrl] = useState<string>('');
   const [answerFlag, setAnswerFlag] = useState<boolean>(true);
 
