@@ -1,6 +1,6 @@
 import Koa from "koa";
 import serve from "koa-static";
-import Router from "@koa/router";
+import Router from "koa-router";
 import { matchPath } from "react-router-dom";
 import App from "../web/pages/App-server";
 // import { RootStoreType, createStore } from '@models/root.store';
