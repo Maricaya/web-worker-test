@@ -7,3 +7,13 @@ import App from '@pages/App';
 import './index.css';
 //hydrate
 ReactDOM.render(<App />, document.getElementById('main'));
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/assets/service-worker.js').then(registration => {
+        console.log('SW registered: ', registration);
+      }).catch(registrationError => {
+        console.log('SW registration failed: ', registrationError);
+      });
+    });
+}

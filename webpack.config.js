@@ -2,21 +2,16 @@ const argv = require('yargs-parser')(process.argv.slice(2));
 const _mode = argv.mode || 'development';
 const _modeFlag = _mode === 'production' ? true : false;
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
-const {
-    merge
-} = require('webpack-merge');
-const {
-    sync
-} = require('glob');
-const {
-    resolve,
-    join
-} = require('path');
+const { merge } = require('webpack-merge');
+const { sync}  = require('glob');
+const { resolve , join } = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 // const files = sync('./src/web/views/**/*.entry.js');
+const {GenerateSW} = require('workbox-webpack-plugin');
+
 
 
 let _entry = {
@@ -40,6 +35,12 @@ let _plugins = [
             from: './lib',
             to: '../lib',
         }, ],
+    }),
+    new GenerateSW({
+        // 这些选项帮助快速启用 ServiceWorkers
+        // 不允许遗留任何“旧的” ServiceWorkers
+        clientsClaim: true,
+        skipWaiting: true,
     }),
 ];
 
